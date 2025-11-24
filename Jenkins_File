@@ -2,15 +2,15 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'jmeter-with-plugins'  // Your Docker image
-        TEST_REPO  = 'https://github.com/Masthanshaik1/Master-for-PT.git'  // Git repo with .jmx files
+        IMAGE_NAME = 'dockerjmeter'  // Your Docker image
+        TEST_REPO  = 'https://github.com/Laxman1164/AB_MixedRun.git'  // Git repo with .jmx files
     }
 
     stages {
         stage('Checkout Tests') {
             steps {
                 // Pull your test scripts from Git
-                git branch: 'main', credentialsId: 'SHAIK_1122', url: "${TEST_REPO}"
+                git branch: 'main', credentialsId: 'Laxman_1122', url: "${TEST_REPO}"
             }
         }
 
@@ -23,7 +23,7 @@ pipeline {
                         -v "%WORKSPACE%:/tests" ^
                         ${IMAGE_NAME} ^
                         /opt/apache-jmeter-5.6.3/bin/jmeter ^
-                        -n -t /tests/webtours1610.jmx ^
+                        -n -t /tests/AccountSummary.jmx ^
                         -l /tests/results.jtl
                     """
                 }
@@ -37,3 +37,4 @@ pipeline {
         }
     }
 }
+
