@@ -20,7 +20,7 @@ pipeline {
             steps {
                 bat """
                 docker run --rm -v %cd%\\JMX_Files:/tests -w /tests ${IMAGE_NAME} ^
-                -n -t Sample.jmx -l results.jtl
+                -n -t AccountSummary.jmx -l results.jtl
                 """
             }
         }
